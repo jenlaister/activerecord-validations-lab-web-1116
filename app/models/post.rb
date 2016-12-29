@@ -3,9 +3,5 @@ class Post < ActiveRecord::Base
   validates(:content, { :length => { :minimum => 250 } })
   validates(:summary, { :length => { :maximum => 250 } })
   validates :category, inclusion: { in: %w(Fiction Non-Fiction)}
-  validates :title, format: { with: /Won't Believe|Secret|Top [0-9]|Guess/ }
-  #, message: "Title is valid"
+  validates :title, presence: { message: "Title must be valid"}, format: { with: /Won't Believe|Secret|Top [0-9]|Guess/ }
 end
-
-# validates :legacy_code, format: { with: /\A[a-zA-Z]+\z/,
-#   message: "only allows letters" }
